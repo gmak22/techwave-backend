@@ -29,8 +29,8 @@ productRouter.get("/", async (req, res) => {
 
         console.log(query,sortQuery)
 
-        const courses = await CourseModel.find(query).sort(sortQuery).skip(skip).limit(limitNumber);
-        const totalCourses = await CourseModel.countDocuments(query);
+        const courses = await ProductModel.find(query).sort(sortQuery).skip(skip).limit(limitNumber);
+        const totalCourses = await ProductModel.countDocuments(query);
         const totalPages = Math.ceil(totalCourses / limitNumber);
         res.status(200).send({ courses, totalPages, currentPage: pageNumber });
     } catch (err) {
